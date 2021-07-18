@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Testing</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+        </script>
+    <script type="text/javascript">
+        function myFunction() {
+            // let value = document.getElementById("inputID").value;
+            let value = $("#inputID").val();
+            if (value === "hi") {
+                document.getElementById("myDiv").innerHTML = 'What Hi!';
+            } else {
+                document.getElementById("myDiv").innerHTML = value;
+            }
+        };
+    </script>
+    <style>
+        .label {
+            height: 4rem;
+            width: 15rem;
+            text-align: -webkit-center;
+            background: goldenrod;
+            font-size: 2rem;
+            padding: 4px;
+            border-radius: 0.8rem;
+        }
+
+        .input {
+            width: 35rem;
+            height: 4rem;
+            padding-top: 1rem;
+            margin-top: 15px;
+            border-radius: 1rem;
+            color: chocolate;
+            padding-left: 10px;
+            padding-bottom: 10px;
+            padding-right: 10px;
+            background: lightgray;
+            border: thin;
+        }
+
+        .myDiv {
+            width: 65rem;
+            text-align: -webkit-center;
+            font-family: cursive;
+            color: coral;
+            font-size: 4rem;
+            background: linear-gradient(45deg, skyblue, transparent);
+            height: 7rem;
+            margin-left: 10rem;
+            border-radius: 2rem;
+            text-align: -webkit-center;
+            box-shadow: 0px 0px 10px red;
+        }
+
+        .myHr {
+            width: 50%;
+            height: 5px;
+            background: skyblue;
+            border-radius: 40rem;
+            border-block-color: white;
+        }
+
+        .myFieldset {
+            border: solid;
+            border-color: lightgrey;
+            border-radius: 50px;
+            margin-left: 23rem;
+            margin-right: 23rem;
+            padding-bottom: 10px;
+        }
+
+        .myBtn {
+            width: -webkit-fill-available;
+            background-color: teal;
+            color: ghostwhite;
+            font-variant: all-small-caps;
+            font-size: x-large;
+            font-family: inherit;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#toggleButton").click(function () {
+                $('#toggleDiv').toggle('slow');
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="toggleDiv" style="color: gray;">
+        <div class="display-4">Gharrrrr!!!!</div>
+        <div class="display-3">Gharrrrrrrrrrrrrrrrrr!!!!</div>
+    </div>
+    <button id="toggleButton" class="myBtn">Click</button>
+    <hr class="myHr">
+    <div>
+        <label class="label" for="myInput">My Input</label>
+        <input class="input" type="text" id="inputID" placeholder="Input Your Text" onkeyup="myFunction()">
+    </div>
+    <hr class="myHr">
+    <div class="myDiv" id="myDiv">
+    </div>
+    <br>
+    <hr class="myHr">
+    <script>
+        function submitForm() {
+            let minLength = document.getElementById("minLength").value;
+            let maxLength = document.getElementById("maxLength").value;
+            let smallChar = document.getElementById("smallChar").checked;
+            let capitalChar = document.getElementById("capitalChar").checked;
+            let spChar = document.getElementById("spChar").value;
+            console.log(minLength);
+            console.log(maxLength);
+            console.log(smallChar);
+            console.log(capitalChar);
+            console.log(spChar);
+
+            var pattern = "/^.*(?=.{" + minLength + ",})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[" + spChar + "]).*$/";
+            console.log(pattern);
+
+            if (minLength < 10) {
+                document.getElementById("minLength").style.borderColor = "red";
+                document.getElementById("minLength").style.borderRadius = "1rem";
+            } else {
+                document.getElementById("minLength").style.borderColor = "green";
+            }
+            if (!smallChar && !capitalChar) {
+                document.getElementById("divErr").innerHTML = 'Atleast one checkbox should be checked';
+                return false;
+            } else {
+                document.getElementById("divErr").innerHTML = '';
+            }
+            if (Number(minLength) > Number(maxLength)) {
+                document.getElementById("divErr").innerHTML = 'Min cannot be greater than Max';
+                return false;
+            } else {
+                document.getElementById("divErr").innerHTML = '';
+            }
+
+        }
+    </script>
+    <div class="container" style="text-align-last: center;">
+        <fieldset class="myFieldset">
+            <h1 class="display-5">Password Policy Form</h1>
+            <hr class="myHr" style="margin-left: 9rem; height: 2px;">
+            MIN LENGTH <input id="minLength" type="number" min="5" max="35" value="5"
+                style="border-radius: 1rem; border-color: skyblue;" onkeypress="return false"> &nbsp; &nbsp;
+            MAX LENGTH <input id="maxLength" type="number" min="5" max="35" value="35" style="border-radius: 1rem;"
+                onkeypress="return false"><br><br>
+            Special characters <input class="form-input" id="spChar" type="text"
+                style="border-radius: 1rem; border-color: darkseagreen; border-left-width: thin;"> <br> <br>
+            <div class="form-check form-switch" style="margin-left: 15rem; padding-right: 15rem;">
+                <input style="font-size: larger;" class="form-check-input" id="smallChar" type="checkbox"
+                    placeholder="a-z" checked> a-z
+            </div>
+            <div class="form-check form-switch" style="margin-left: 15rem;padding-right: 15rem;">
+                <input style="font-size: larger;" class="form-check-input" id="capitalChar" type="checkbox"
+                    placeholder="A-Z" checked> A-Z
+            </div>
+            <br>
+            <div style="color: red;" id="divErr"></div>
+            <br>
+            <button class="btn btn-success" onclick="submitForm()"
+                style="width: 28rem; border-radius: 15px; background-color: cornflowerblue;">click Me</button>
+        </fieldset>
+
+    </div>
+
+
+</body>
+<hr class="myHr">
+<div>
+    <form action="">
+        <input class="form-input date" type="date" id="txtDate" required>
+        <input class="form-input time" type="datetime-local" id="txtTime" required>
+        <input class="btn btn-success" type="submit" value="submit" id="submitBtn" disabled />
+        <button type="button" class="btn btn-default" id="enableSubmit">Enable SubmitBtn</button>
+    </form>
+</div>
+<hr class="myHr">
+<br><br>
+<hr class="myHr">
+RANGE : <input type="range" min="5" max="10" value="5"><br>
+URL : <input type="url">
+<hr class="myHr">
+<br><br><br>
+
+<script>
+    $(document).ready(function () {
+        $("#enableSubmit").click(function () {
+            $("#submitBtn").attr("disabled", false);
+        });
+        $("#enableSubmit").dblclick(function () {
+            $("#submitBtn").attr("disabled", true);
+        });
+    });
+</script>
+<script>
+    $(function () {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+
+        var minDate = year + '-' + month + '-' + day;
+
+        $('#txtDate').attr('min', minDate);
+    });
+</script>
+
+</html>

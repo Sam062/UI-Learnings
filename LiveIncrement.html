@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <style></style>
+    <style>
+        .myDiv {
+            width: 150px;
+            height: 120px;
+            display: inline-block;
+            margin: 1rem;
+        }
+    </style>
+</head>
+
+<body style="background-color: darkslateblue; color: whitesmoke; zoom: inherit;">
+    <div style="text-align-last: center; margin-top: 7rem;">
+        <div class="myDiv">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
+                class="bi bi-check-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                    d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+            </svg>
+            <div class="counter" data-target="4000"
+                style="font-size: 70px; margin-top: -18px; color: chocolate; margin-bottom: -15px"></div>
+            <span style="font-weight: 100;">Completed Projects</span>
+        </div>
+        <div class="myDiv">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-emoji-smile"
+                viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                    d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+            </svg>
+            <div class="counter" data-target="6000"
+                style="font-size: 70px; margin-top: -18px; color: chocolate; margin-bottom: -15px"></div>
+            <span style="font-weight: 100;">Our Happy Clients</span>
+        </div>
+        <div class="myDiv">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-clock"
+                viewBox="0 0 16 16">
+                <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+            </svg>
+            <div class="counter" data-target="8000"
+                style="font-size: 70px; margin-top: -18px; color: chocolate; margin-bottom: -15px"></div>
+            <span style="font-weight: 100;">Ongoing Projects</span>
+        </div>
+    </div>
+    <!-- <script src="Script.js"></script> -->
+    <script>
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach((counter) => {
+            counter.innerHTML = 0;
+            const updateCounter = () => {
+                const targetCount = +counter.getAttribute('data-target');
+                const startingCount = Number(counter.innerHTML);
+                const incr = targetCount / 100;
+
+                if (startingCount < targetCount) {
+                    counter.innerHTML = `${(startingCount + incr)}`;
+                    setTimeout(updateCounter, 1);
+                } else {
+                    counter.innerHTML = targetCount;
+                }
+            }
+            updateCounter();
+        });
+
+    </script>
+</body>
+
+</html>
