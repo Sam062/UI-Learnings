@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <style>
+        .myInput {
+            height: 5rem;
+            width: 10rem;
+            text-align-last: center;
+            font-size: xxx-large;
+            font-weight: 900;
+            color: coral;
+        }
+    </style>
+
+    <script>
+        var player1 = 'Player1';
+        var player2 = 'Player2';
+    </script>
+    <script>
+        var counter = 0;
+        var arr = new Array(9);
+        function playGame() {
+            ++counter;
+            arr[0] = $('#row00').val();
+            arr[1] = $('#row01').val();
+            arr[2] = $('#row02').val();
+            arr[3] = $('#row10').val();;
+            arr[4] = $('#row11').val();
+            arr[5] = $('#row12').val();
+            arr[6] = $('#row20').val();
+            arr[7] = $('#row21').val();
+            arr[8] = $('#row22').val();
+            // console.log(counter);
+            // console.log(arr);
+            if (counter > 4) {
+                checkWin();
+            }
+        }
+        function checkWin() {
+            if (arr[0] != "" && (arr[0] == arr[1] && arr[1] == arr[2])) {
+                checkPlayer();
+            }
+            else if (arr[0] != "" && arr[0] == arr[3] && arr[3] == arr[6]) {
+                checkPlayer();
+            }
+            else if (arr[0] != "" && arr[0] == arr[4] && arr[4] == arr[8]) {
+                checkPlayer();
+            }
+            else if (arr[1] != "" && arr[1] == arr[4] && arr[4] == arr[7]) {
+                checkPlayer();
+            }
+            else if (arr[2] != "" && arr[2] == arr[5] && arr[5] == arr[8]) {
+                checkPlayer();
+            }
+            else if (arr[3] != "" && arr[3] == arr[4] && arr[4] == arr[5]) {
+                checkPlayer();
+            }
+            else if (arr[6] != "" && arr[6] == arr[7] && arr[7] == arr[8]) {
+                checkPlayer();
+            }
+            else if (arr[2] != "" && arr[2] == arr[4] && arr[4] == arr[6]) {
+                checkPlayer();
+            } else if (counter >= 9) {
+                alert('Match Draw');
+                location.reload();
+            }
+        }
+        function checkPlayer() {
+            if (counter % 2 == 0) {
+                alert("Player2 Wins");
+                location.reload();
+
+            } else {
+                alert("Player1 Wins");
+                location.reload();
+            }
+        }
+    </script>
+</head>
+
+<body style="background-color: darkslateblue; color: whitesmoke; zoom: inherit;">
+    <div class="container">
+        <h1 class="display-5" style="text-align: center; margin-left: -5rem;">Input : X and O</h1>
+        <table style="margin-left: 15rem; margin-top: 2rem;">
+            <tr>
+                <td><input class="myInput" type="text" maxlength="1" id="row00" onkeyup="playGame()"></td>
+                <td><input class="myInput" type="text" maxlength="1" id="row01" onkeyup="playGame()"></td>
+                <td><input class="myInput" type="text" maxlength="1" id="row02" onkeyup="playGame()"></td>
+            </tr>
+            <tr>
+                <td><input class="myInput" type="text" maxlength="1" id="row10" onkeyup="playGame()"></td>
+                <td><input class="myInput" type="text" maxlength="1" id="row11" onkeyup="playGame()"></td>
+                <td><input class="myInput" type="text" maxlength="1" id="row12" onkeyup="playGame()"></td>
+            </tr>
+            <tr>
+                <td><input class="myInput" type="text" maxlength="1" id="row20" onkeyup="playGame()"></td>
+                <td><input class="myInput" type="text" maxlength="1" id="row21" onkeyup="playGame()"></td>
+                <td><input class="myInput" type="text" maxlength="1" id="row22" onkeyup="playGame()"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
